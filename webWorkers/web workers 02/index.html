@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de Web Worker</title>
+</head>
+<body>
+    <h1>Calculadora de Soma em Web Worker</h1>
+    <p>Calculando a soma de 1 até <span id="nValue">1000000</span></p>
+    <button onclick="startWorker()">Iniciar cálculo</button>
+    <p>Resultado: <span id="result">Aguardando cálculo...</span></p>
+
+    <script>
+        // Função para iniciar o Web Worker
+        function startWorker() {
+            const n = parseInt(document.getElementById('nValue').textContent);
+
+            // Criar um Web Worker
+            const worker = new Worker('worker.js');
+
+            // Enviar dados para o Web Worker
+            worker.postMessage(n);
+
+            // Lidar com a resposta do Web Worker
+            worker.onmessage = function (e) {
+                document.getElementById('result').textContent = e.data;
+            };
+        }
+    </script>
+</body>
+</html>
