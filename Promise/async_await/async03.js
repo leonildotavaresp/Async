@@ -1,9 +1,13 @@
+function promesaMult (a,b) {
+    return new Promise((resolve, reject) => {
+        let soma = a + b
+        resolve(soma)
+    })
+}
+
 async function calcula() {
-    let soma = 0
     try {
-        for (let index = 0; index < 20000; index++) {
-            soma = await index + 2;
-        }
+            soma = await promesaMult(34546523423423442360,3343545423424243424234242);
     } catch (error) {
         console.log(`Erro ${error}`);
     }
@@ -14,6 +18,9 @@ calcula()
     .then(valor_await => {
         console.log(valor_await);
     });
+
+console.log(promesaMult());   
+console.log(calcula());   
 
 console.log("Aguardando o resultado...");
 
